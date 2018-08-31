@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body %}
+<br>
+<div class="container">
+<h1>Template Generator</h1>
+<h4>Fill the form below and share your thoughts how you are doing diversity within FIRST.</h4>
+<br>
+<div class ="form-group">
+<form role="form" method="post">
+    {% csrf_token %}
+        {% include 'bf_form.html' with form=form %}
+ <button type="submit" class="btn btn-primary">Generate!</button></form></div>
+</div>
+{% endblock %}
