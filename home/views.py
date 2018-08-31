@@ -7,6 +7,9 @@ from home.template_generator import Badge_Reporter
 from django.utils.decorators import method_decorator
 from home.forms import TemplateForm
 
+from easy_pdf.views import PDFTemplateView
+
+
 class TemplatePage(TemplateView):
 	template_name = 'home/template-creator.html'
 
@@ -35,3 +38,7 @@ class HomePage(TemplateView):
 
 	def get(self, request):
 		return render(request, self.template_name)
+
+
+class PosterView(PDFTemplateView):
+    template_name = 'hello.html'
