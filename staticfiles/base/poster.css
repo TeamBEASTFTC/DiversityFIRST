@@ -1,0 +1,57 @@
+
+            @page{
+                size: a3 landscape;
+                padding: 0;
+            }
+             body {
+                 font-weight: 200;
+                 font-size: 75px;
+             }
+             .container{
+                position: relative;
+                line-height: 100px;
+                height: 100%;
+                padding: 10px 0px 0px 75px;  
+
+             }
+             #footer {
+                    position: absolute;
+                    bottom: 0;
+                    padding-bottom: 175px;
+                    padding-right: 0 !important;
+                    padding-left: 1350px;
+                    height: 100px;
+                    width: 100px; 
+             }
+             .title {
+                font-family: 'Times New Roman', sans-serif;
+                 font-size: 100px;
+                 font-weight: 900 !important;
+                 font-style: italic;
+                 font-weight: 100;
+
+                text-align: left;
+             }
+
+             .details {
+                position: absolute;
+                top: 200px;
+                 word-break: keep-all;
+
+                font-family: 'Vladimir Script', Papyrus;
+                text-shadow: 3px 3px 3px #fff;
+                text-align: left !important;
+                padding-right: 300px;
+                padding-top: -500px;
+                 /*margin-left: 40%;*/
+             }
+
+             .Diversity
+             {
+                color: orange;
+             }
+             #logo{
+                padding-bottom: 10px;
+                height: 350px;
+                width: 350px;
+             }

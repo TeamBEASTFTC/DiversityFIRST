@@ -125,6 +125,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = 'www.diversity-first/herokuapp.com/static/'
+
 #heroku stuff
 import dj_database_url
 db_from_env = dj_database_url.config()

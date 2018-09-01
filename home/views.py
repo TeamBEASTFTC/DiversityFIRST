@@ -1,13 +1,17 @@
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect, get_object_or_404
-
+from django.http import HttpResponse
+from django.views.generic import View
 from home.template_generator import Badge_Reporter
+from django.template.loader import get_template
 
 
 from django.utils.decorators import method_decorator
 from home.forms import TemplateForm
+from home.utils import render_to_pdf #created in step 4
 
 from easy_pdf.views import PDFTemplateView
+
 
 
 class TemplatePage(TemplateView):
@@ -27,11 +31,28 @@ class TemplatePage(TemplateView):
 			msg = request.POST.get('message', '')
 			team_name = request.POST.get('team_name', '')
 			#print the message out too
-			return Badge_Reporter.Badge_Report(self, request, message=msg, name=team_name)
+			context = {
+				"message": msg,
+				"team_name": team_name,
+
+				}
+
+			pdf = render_to_pdf(request, 'pdf/poster.html', context)
+			if pdf:
+				
+				response =  HttpResponse(pdf, content_type='application/pdf')
+				filename = "diversityFIRST"
+				content = "inline; filename='%s'" %(filename)
+				download = request.GET.get("download")
+				if download:
+					content = "attachment; filename='%s'" %(filename)
+				response['Content-Disposition'] = content
+				return response
+			return HttpResponse("Not Found")
+
 		else:
 			print(False)
 			return render(request, self.template_name, args)
-
 
 class HomePage(TemplateView):
 	template_name = 'home/home_page.html'
@@ -41,4 +62,25 @@ class HomePage(TemplateView):
 
 
 class PosterView(PDFTemplateView):
-    template_name = 'hello.html'
+	template_name = 'hello.html'
+
+class GeneratePdf(View):
+	def get(self, request, *args, **kwargs):
+		context = {
+				"invoice_id": 123,
+				"customer_name": "Felix Hall",
+				"amount": 1399.99,
+				"date": "Today",
+			}
+
+		pdf = render_to_pdf('pdf/invoice.html', context)
+		if pdf:
+			response =  HttpResponse(pdf, content_type='application/pdf')
+			filename = "filename"
+			content = "inline; filename='%s'" %(filename)
+			download = request.GET.get("download")
+			if download:
+				content = "attachment; filename='%s'" %(filename)
+			response['Content-Disposition'] = content
+			return response
+		return HttpResponse("Not Found")
