@@ -73,7 +73,6 @@ TEMPLATES = [
             ],
         },
     },
-    os.path.join(BASE_DIR,  'templates'),
 ]
 
 WSGI_APPLICATION = 'diversityFIRST.wsgi.application'
