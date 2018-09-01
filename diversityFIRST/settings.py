@@ -73,6 +73,7 @@ TEMPLATES = [
             ],
         },
     },
+    os.path.join(BASE_DIR,  'templates'),
 ]
 
 WSGI_APPLICATION = 'diversityFIRST.wsgi.application'
@@ -127,7 +128,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = 'www.diversity-first/herokuapp.com/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 
 #heroku stuff
 import dj_database_url
