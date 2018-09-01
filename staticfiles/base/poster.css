@@ -34,11 +34,12 @@
              }
 
              .details {
+                font-size: 70px;
                 position: absolute;
-                top: 200px;
+                top: 300px;
                  word-break: keep-all;
 
-                font-family: 'Vladimir Script', Papyrus;
+                font-family: 'Brush Script', Papyrus;
                 text-shadow: 3px 3px 3px #fff;
                 text-align: left !important;
                 padding-right: 300px;
