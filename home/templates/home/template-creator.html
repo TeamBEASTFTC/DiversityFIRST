@@ -2,18 +2,26 @@
 
 {% block head %}
 <title>DiversityFIRST - template creator</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</script>
+
 {% endblock %}
 
 {% block body %}
+
 <br>
 <div class="container">
 <h1>Template Generator</h1>
 <h4>Fill in the form below to tell your team's story about putting #DiversityFIRST.</h4>
+<h6 style="opacity: 0.5;"><i>Please note, you can get a blank poster by leaving the team and message fields blank.</i></h6>
 <br>
 <div class ="form-group">
 <form role="form" method="post">
     {% csrf_token %}
         {% include 'bf_form.html' with form=form %}
- <button type="submit" class="btn btn-primary">Generate!</button></form></div>
+<button type='submit' class="btn btn-dark"><i class="fa fa-download"></i> Download</button>
+</form></div>
 </div>
 {% endblock %}
