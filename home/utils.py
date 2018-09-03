@@ -17,14 +17,21 @@ def render_to_pdf(template_src, context_dict={}):
 	return None
 '''
 from weasyprint import HTML, CSS
-def render_to_pdf(request, template_src, context_dict={}):
+def render_to_pdf(request, template_src, context_dict={}, size='A3'):
 	html_string = render_to_string(template_src, context_dict)
 #	template = get_template(template_src)
 #	html = template.render(context_dict)
+	
+	#poster size
+
+	poster_path = '/base/{}_poster.css'.format(size)
+
+
+
 	pdf = HTML(
 		string=html_string,
 		base_url=request.build_absolute_uri()
 		).write_pdf(
-		stylesheets=[CSS(settings.STATIC_ROOT +  '/base/poster.css')],
+		stylesheets=[CSS(settings.STATIC_ROOT +  poster_path)],
 		presentational_hints=True)
 	return pdf

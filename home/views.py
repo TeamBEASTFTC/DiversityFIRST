@@ -30,14 +30,14 @@ class TemplatePage(TemplateView):
 			print(True)
 			msg = request.POST.get('message', '')
 			team_name = request.POST.get('team_name', '')
+			size= request.POST.get('size', 'A3')
 			#print the message out too
 			context = {
 				"message": msg,
 				"team_name": team_name,
-
 				}
 
-			pdf = render_to_pdf(request, 'pdf/poster.html', context)
+			pdf = render_to_pdf(request, 'pdf/poster.html', context, size=size)
 			if pdf:
 				
 				response =  HttpResponse(pdf, content_type='application/pdf')
