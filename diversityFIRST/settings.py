@@ -43,7 +43,6 @@ INSTALLED_APPS = [
 
     'widget_tweaks',
     'easy_pdf',
-    'djng',
 ]
 
 MIDDLEWARE = [
