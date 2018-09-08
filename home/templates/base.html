@@ -3,13 +3,16 @@
 	<head>
 		<!-- Bootstrap stuff -->
     {% load staticfiles %}
+    {% load static %}
 
-<script src="{% static "js/jquery-1.11.1.js" %}"></script>
-<script src="{% static "js/rango-jquery.js" %}"></script>
+<script src="{% static 's/jquery-1.11.1.js' %}"></script>
+<script src="{% static 'js/rango-jquery.js' %}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
+<script src="{% static 'pace/pace.js' %}"></script>
+<link href="{% static 'pace/themes/white/pace-theme-flash.css' %}" rel="stylesheet" />
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<!-- Responsive meta tag -->
@@ -67,7 +70,6 @@ background: linear-gradient(to right, #eea849, #f46b45); /* W3C, IE 10+/ Edge, F
     </footer>
     {% endblock %} -->
 
-{% include 'javascript_extras/loader.html' %}
 
 				<!-- jQuery first, then Tether, then Bootstrap JS. -->
 				<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
