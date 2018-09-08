@@ -26,9 +26,9 @@
                     height: 7.0%;
                     width: 7.0%; 
              }
-             .title {
+             .pretitle {
                 font-family: 'Verdana','Times New Roman', sans-serif;
-                 font-size: 175%;
+                 font-size: 150%;
                  font-weight: 900 !important;
                  font-style: italic;
 

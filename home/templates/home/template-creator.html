@@ -7,16 +7,22 @@
 <link rel="stylesheet" href="{% static 'css/old_preview.css' %}">
 
 <style type="text/css">
+.preview{
+	max-width: 500px ! important;
+    max-height: calc(500px*0.7071) ! important;
 
+}
 .box{
     width: 60vw;
+    max-width: 500px ! important;
+    max-height: calc(500px*0.7071) ! important;
     padding-top: calc(50vw*0.7071);
 
     }
 .pretitle {
 	font-family: 'Verdana','Times New Roman', sans-serif;
-	font-size: 3.2vw;
-	padding-top: 6vh ! important;
+	font-size: 150%;
+	padding-top: 6% ! important;
 	padding-left: 0.75vw;
 	font-weight: 900 !important;
 	font-style: italic;
@@ -29,7 +35,7 @@
     padding-left: 0.75vw;
     padding-right: 18vw;
     padding-top: 3.2vh; 
-    font-size: 2.95vw;
+    font-size: 138%;
     position: absolute;
     word-break: keep-all;
 
@@ -48,19 +54,20 @@
 {% endblock %}
 
 {% block body %}
-
-<br>
-<div class="container">
-<h1>Template Generator</h1>
 <h4>Fill in the form below to tell your team's story about putting #DiversityFIRST.</h4>
 <h6 style="opacity: 0.5;"><i>Please note, you can get a blank poster by leaving the team and message fields blank.</i></h6>
 <br>
 <div class ="form-group">
 <form role="form" method="post">
+	<div style="margin-right: 2vw; margin-left: 2vw;">
+<div id="row_id" class="row">
+	<div class="col-md">
     {% csrf_token %}
         {% include 'bf_form.html' with form=form %}
-<div class="box" style="display: block;">
-<div class='preview'>
+        <button id="sm_down" type='submit' class="btn btn-dark" style="width:100%; display: none;"><i class="fa fa-download"></i> Download</button>
+    </div>
+<div id="box_js2" class="box col-md" style="display: block; text-align: left;">
+<div id="box_js" class='preview'>
                  <strong><h1 class='pretitle'>We put <font color="orange">#DiversityFIRST</font>  by...</h1></strong>
                  <br>
              <h2 class='predetails' id='message'></h2> 
@@ -75,21 +82,55 @@
             ">
                 {% include 'base64/#diversity_logo.html' with widthS=25 %}
              </div>
+         </div>
      </div>
-    </div>
-    <br>
-<button type='submit' class="btn btn-dark"><i class="fa fa-download"></i> Download</button>
+    </div></div>
+  <br>
+<button id="lg_down" type='submit' class="btn btn-dark" style="width:100%"><i class="fa fa-download"></i> Download</button>
 
 </form></div>
 
-</div>
     <br><br>
  <script type="text/javascript">
+
 var messageIn = document.getElementById("message_field");
+
 var messageEl = document.getElementById("message");
 messageIn.onchange = function(){
 	message.innerHTML = messageIn.value;
+
 }
+var row_c = document.getElementById("row_id");
+var sm_down = document.getElementById("sm_down");
+var lg_down = document.getElementById("lg_down");
+
+if (1 ==1){
+	alert(row_c.offsetWidth)
+}
+
+if (row_c.offsetWidth >= 720){
+	lg_down.style.display = 'none';
+	sm_down.style.display = 'block';
+} else {
+	lg_down.style.display = 'block';
+	sm_down.style.display = 'none';
+}
+
+/* Make preview set smaller once broken*/
+var prebox1 = document.getElementById("box_js");
+var width1 = prebox.offsetWidth;
+
+var prebox2 = document.getElementById("box_js2");
+var width2 = prebox2.offsetWidth;
+/*if (prebox.getComputedStyle.width >= "500px"){ */
+if ((width1 >= 500) || (width2 >= 500)){
+	prebox1.style.height = (500*0.7071);
+	alert("done");
+	prebox2.style.height = (500*0.7071);
+}
+
+
  </script>
-}
+
+
 {% endblock %}
