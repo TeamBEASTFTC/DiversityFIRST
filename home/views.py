@@ -27,7 +27,7 @@ class TemplatePage(TemplateView):
 
 		form_info = TemplateForm(request.POST)
 		if form_info.is_valid():
-			print(True)
+			print('post accepted.')
 			msg = request.POST.get('message', '')
 			team_name = request.POST.get('team_name', '')
 			size= request.POST.get('size', 'A3')

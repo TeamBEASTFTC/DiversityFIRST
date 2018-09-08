@@ -1,12 +1,50 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block head %}
 <title>DiversityFIRST - template creator</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/old_preview.css' %}">
+
+<style type="text/css">
+
+.box{
+    width: 60vw;
+    padding-top: calc(50vw*0.7071);
+
+    }
+.pretitle {
+	font-family: 'Verdana','Times New Roman', sans-serif;
+	font-size: 3.2vw;
+	padding-top: 6vh ! important;
+	padding-left: 0.75vw;
+	font-weight: 900 !important;
+	font-style: italic;
+
+	text-align: left;
+             }
 
 
-</script>
+    .predetails {
+    padding-left: 0.75vw;
+    padding-right: 18vw;
+    padding-top: 3.2vh; 
+    font-size: 2.95vw;
+    position: absolute;
+    word-break: keep-all;
 
+    font-family: 'Lucida Calligraphy','Freestyle Script';
+    text-shadow: 3px 3px 3px #fff;
+    text-align: left !important;
+    /*margin-left: 40%;*/
+    }
+
+    .Diversity
+    {
+    color: orange;
+    }
+
+</style>
 {% endblock %}
 
 {% block body %}
@@ -21,7 +59,37 @@
 <form role="form" method="post">
     {% csrf_token %}
         {% include 'bf_form.html' with form=form %}
+<div class="box" style="display: block;">
+<div class='preview'>
+                 <strong><h1 class='pretitle'>We put <font color="orange">#DiversityFIRST</font>  by...</h1></strong>
+                 <br>
+             <h2 class='predetails' id='message'></h2> 
+            <div style="
+					position: absolute;
+                    bottom: 0% ! important;
+                    right: 0;
+                    left: 73%;
+                    padding-right: 0 !important;
+                    height: auto;
+                    width: 100%;
+            ">
+                {% include 'base64/#diversity_logo.html' with widthS=25 %}
+             </div>
+     </div>
+    </div>
+    <br>
 <button type='submit' class="btn btn-dark"><i class="fa fa-download"></i> Download</button>
+
 </form></div>
+
 </div>
+    <br><br>
+ <script type="text/javascript">
+var messageIn = document.getElementById("message_field");
+var messageEl = document.getElementById("message");
+messageIn.onchange = function(){
+	message.innerHTML = messageIn.value;
+}
+ </script>
+}
 {% endblock %}

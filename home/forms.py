@@ -12,6 +12,10 @@ class TemplateForm(forms.Form):
 		max_length=500,
 		help_text='How you do #DiversityFIRST within your team.',
 		min_length=5,
+		widget=forms.TextInput(attrs={
+			'id': "message_field",
+			
+			}),
 		required=False)
 	team_name = forms.CharField(label='Team Name:', 
 		max_length=100,

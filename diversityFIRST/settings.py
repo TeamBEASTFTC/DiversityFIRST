@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'widget_tweaks',
     'easy_pdf',
+    'djng',
 ]
 
 MIDDLEWARE = [
@@ -129,6 +130,12 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_DIRS = [
+#    ('node_modules', os.path.join(BASE_DIR, 'node_modules')),
+#]
+
+#angluar stuff
+#FORM_RENDERER = 'djng.forms.renderers.DjangoAngularTemplates'
 
 
 #heroku stuff

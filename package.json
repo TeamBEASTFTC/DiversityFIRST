@@ -1,0 +1,27 @@
+{
+  "name": "diversityfirst",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fhall21/Diversity-FIRST.git"
+  },
+  "keywords": [
+    "FIRST",
+    "diversity",
+    "diversityFIRST"
+  ],
+  "author": "Felix Hall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fhall21/Diversity-FIRST/issues"
+  },
+  "homepage": "https://github.com/Fhall21/Diversity-FIRST#readme",
+  "dependencies": {
+    "angular": "^1.7.4"
+  }
+}
