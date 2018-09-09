@@ -44,12 +44,12 @@
 {% endblock %}
 
 {% block body %}
-<img data-aos="fade" data-aos-duration="3000"
-id="header_img" src="{% static 'img/dark_logo2.png' %}">
+<div data-aos="fade" data-aos-duration="3000">
+<img id="header_img" src="{% static 'img/dark_logo2.png' %}">
 <div id="header_block">
 <h1><font color="white"><strong>Be part of the movement</strong></font></h1>
 <br>
-</div>
+</div></div>
 
 {# The Mission #}
 <div class="container-fluid" id="Welcome_Mission">
@@ -61,6 +61,7 @@ id="header_img" src="{% static 'img/dark_logo2.png' %}">
 {# template creator #}
 <h2><strong>Get Involved!</strong></h2>
 <h3 id="marker"></h3>
+
 {% include 'home/template-creator.html' with form=form %}
 </div>
 

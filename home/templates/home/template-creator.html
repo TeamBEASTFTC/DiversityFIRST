@@ -4,21 +4,99 @@
 {% block head %}
 <title>DiversityFIRST - template creator</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="{% static 'css/old_preview.css' %}">
+<link rel="stylesheet" href="{% static 'css/old_preview2.css' %}">
 
 <style type="text/css">
-.preview{
-	max-width: 500px ! important;
-    max-height: calc(500px*0.7071) ! important;
 
-}
-.box{
-    width: 60vw;
-    max-width: 500px ! important;
-    max-height: calc(500px*0.7071) ! important;
-    padding-top: calc(50vw*0.7071);
+
+@media screen and (min-width: 700px){
+
+    .box{
+	    position: relative;
+	    width: 30vw ! important;
+	    max-width: 500px ! important;
+	    max-height: calc(500px*0.7071) ! important;
+	    height: 25vw ! important;
+
 
     }
+	.GridBox {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		outline: solid black;
+		grid-gap: 15px 10px;
+
+
+		width: 100%;
+		max-width: 100vw;
+
+		display: grid ! important;
+		grid-template-columns: 60% 40%;
+		grid-template-rows: auto;
+		grid-template-areas: 
+			"form" "preview";
+	  
+	}
+
+	.col1, .col2 {
+		width: 100%;
+		height: 100%;
+		display: grid ! important;
+		grid-row: 1 / span 1;
+
+
+	}
+
+	.col1{
+
+		grid-area: form;
+		grid-column: 1 / span 1;
+	}
+
+	.col2{
+		grid-column: 2 / span 1;
+
+	}
+
+	.preview{
+		max-width: 500px ! important;
+	    max-height: calc(500px*0.7071) ! important;
+
+	}
+}
+@media screen and (max-width: 1300) and (min-width: 700){
+	.box{
+	    width: 100%;
+	    max-width: 500px ! important;
+	    max-height: calc(500px*0.7071) ! important;
+	    height: 100%;
+    }
+    .pretitle {
+		font-size: 150% ! important;
+	}
+}
+@media screen and (max-width: 700){
+		.box{
+		    width: 60vw ! important;
+		    max-width: 500px ! important;
+		    max-height: calc(500px*0.7071) ! important;
+		    height: 42.5vw ! important;
+    }
+}
+@media screen and (min-width: 1300){
+	.box{
+	    width: 45vw;
+	    max-width: 500px ! important;
+	    max-height: calc(500px*0.7071) ! important;
+	    height: 31.75vw;
+	    }
+    .pretitle{
+    	font-size: 200% ! important;
+    }
+
+}
 .pretitle {
 	font-family: 'Verdana','Times New Roman', sans-serif;
 	font-size: 150%;
@@ -57,16 +135,15 @@
 <h4>Fill in the form below to tell your team's story about putting #DiversityFIRST.</h4>
 <h6 style="opacity: 0.5;"><i>Please note, you can get a blank poster by leaving the team and message fields blank.</i></h6>
 <br>
-<div class ="form-group">
+<div id ="GridBox" class="GridBox container">
+<div class="col1">
 <form role="form" method="post">
-	<div style="margin-right: 2vw; margin-left: 2vw;">
-<div id="row_id" class="row">
-	<div class="col-md">
     {% csrf_token %}
         {% include 'bf_form.html' with form=form %}
         <button id="sm_down" type='submit' class="btn btn-dark" style="width:100%; display: none;"><i class="fa fa-download"></i> Download</button>
     </div>
-<div id="box_js2" class="box col-md" style="display: block; text-align: left;">
+    <div class="col2">
+<div id="box_js2" class="box" style="display: block; text-align: left;">
 <div id="box_js" class='preview'>
                  <strong><h1 class='pretitle'>We put <font color="orange">#DiversityFIRST</font>  by...</h1></strong>
                  <br>
@@ -81,16 +158,20 @@
                     width: 100%;
             ">
                 {% include 'base64/#diversity_logo.html' with widthS=25 %}
-             </div>
+             </div></div>
          </div>
      </div>
-    </div></div>
-  <br>
+    </div>
+
 <button id="lg_down" type='submit' class="btn btn-dark" style="width:100%"><i class="fa fa-download"></i> Download</button>
 
-</form></div>
+</form>
+<br>
+<br>
+</div>
 
     <br><br>
+    <br>
  <script type="text/javascript">
 
 var messageIn = document.getElementById("message_field");
@@ -100,7 +181,7 @@ messageIn.onchange = function(){
 	message.innerHTML = messageIn.value;
 
 }
-var row_c = document.getElementById("row_id");
+var row_c = document.getElementById("GridBox");
 var sm_down = document.getElementById("sm_down");
 var lg_down = document.getElementById("lg_down");
 
@@ -119,6 +200,8 @@ var width1 = prebox.offsetWidth;
 
 var prebox2 = document.getElementById("box_js2");
 var width2 = prebox2.offsetWidth;
+prebox2.style.padding-top = width2 * 0.7071
+
 /*if (prebox.getComputedStyle.width >= "500px"){ */
 if ((width1 >= 500) || (width2 >= 500)){
 	prebox1.style.height = (500*0.7071);

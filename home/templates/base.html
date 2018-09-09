@@ -31,24 +31,12 @@ link href="{% static 'pace/themes/white/pace-theme-flash.css' %}" rel="styleshee
 {# bootstrap #}
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<!-- Responsive meta tag -->
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
 
     {% block extra_styles %}
     <style type="text/css">
- @keyframe fadeIn {
-  to {
-    opacity: 1;
-  }
-}
 
-.fade-in {
-  opacity: 0;
-  animation: fadeIn .5s ease-in 1 forwards;
-}
-
-.is-paused {
-  animation-play-state: paused;
-}
       body{
         color: black;
         background: #343a40;
