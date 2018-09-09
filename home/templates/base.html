@@ -5,22 +5,50 @@
     {% load staticfiles %}
     {% load static %}
 
+{# JQuery? #}
+<!--
 <script src="{% static 's/jquery-1.11.1.js' %}"></script>
 <script src="{% static 'js/rango-jquery.js' %}"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+-->
 
+{# angluar #}
+<!--
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+-->
+{# AOS #}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-<script src="{% static 'pace/pace.js' %}"></script>
-<link href="{% static 'pace/themes/white/pace-theme-flash.css' %}" rel="stylesheet" />
 
+{# Pace, loading #}
+<!--
+script src="{% static 'pace/pace.js' %}">/script>
+link href="{% static 'pace/themes/white/pace-theme-flash.css' %}" rel="stylesheet" />
+-->
+
+{# bootstrap #}
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<!-- Responsive meta tag -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     {% block extra_styles %}
     <style type="text/css">
-      
+ @keyframe fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn .5s ease-in 1 forwards;
+}
+
+.is-paused {
+  animation-play-state: paused;
+}
       body{
         color: black;
         background: #343a40;
@@ -42,24 +70,31 @@ background: linear-gradient(to right, #eea849, #f46b45); /* W3C, IE 10+/ Edge, F
 {% block navbar %}
 
 
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+<nav
+id="navBar" 
+style="display: none;"
+class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
 <a class="navbar-brand mr-auto mr-lg-0" href="{% url 'home:home_page' %}"><strong>#DiversityFIRST</strong></a>
+
+<!--
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
    <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <div class="navbar-nav">
 <a class="nav-item nav-link" href="#">Template Creator<span class="sr-only"></span></a>
-    {# a class="nav-item nav-link" href="#">Home/a #}
+
+     Extra labels
+    <a class="nav-item nav-link" href="#">Home</a>
      <a class="nav-item nav-link" href="#">About Us</a>
 
 </div>
 </div>
-</nav
+-->
+</nav>
 
 
-</div>
-</nav></body>
+</body>
 {% endblock %}
 <br><br>
 			{% block body %}
@@ -71,6 +106,11 @@ background: linear-gradient(to right, #eea849, #f46b45); /* W3C, IE 10+/ Edge, F
       </div>
     </footer>
     {% endblock %} -->
+
+<script>
+  AOS.init();
+</script>
+
 
 
 				<!-- jQuery first, then Tether, then Bootstrap JS. -->
