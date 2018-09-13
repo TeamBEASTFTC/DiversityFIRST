@@ -27,10 +27,13 @@ class TemplatePage(TemplateView):
 
 		form_info = TemplateForm(request.POST)
 		if form_info.is_valid():
-			print('post accepted.')
-			msg = request.POST.get('message', '')
-			team_name = request.POST.get('team_name', '')
-			size= request.POST.get('size', 'A3')
+			info = form_info.save()
+
+			print('post accepted 2.')
+			msg = form_info.cleaned_data['message']
+			team_name = form_info.cleaned_data['team_name']
+			size = form_info.cleaned_data['size']
+			print (msg)
 			#print the message out too
 			context = {
 				"message": msg,
@@ -69,10 +72,18 @@ class HomePage(TemplateView):
 
 		form_info = TemplateForm(request.POST)
 		if form_info.is_valid():
+			team_name = form_info.cleaned_data['team_name']
+			print (team_name)
+			info = form_info.save(commit=False)
+
+			if team_name == '' or team_name == None:
+				team_name == 'N/A'
+			info.team_name = team_name
+			info.save()
+
+			msg = form_info.cleaned_data['message']
 			print('post accepted.')
-			msg = request.POST.get('message', '')
-			team_name = request.POST.get('team_name', '')
-			size= request.POST.get('size', 'A3')
+			size= form_info.cleaned_data['size']
 			#print the message out too
 			context = {
 				"message": msg,

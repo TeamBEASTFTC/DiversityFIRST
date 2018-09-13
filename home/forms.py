@@ -1,29 +1,41 @@
 from django import forms
+from home.models import TemplateData
 
-class TemplateForm(forms.Form):
 
-	Size_choices = (
-		('A4', 'A4'),
-		('A3', 'A3'),
-		)
+class TemplateForm(forms.ModelForm):
 
-	message = forms.CharField(
-		label='Message:', 
-		max_length=500,
-		help_text='How you do #DiversityFIRST within your team.',
-		min_length=5,
-		widget=forms.TextInput(attrs={
-			'id': "message_field",
-			
-			}),
-		required=False)
-	team_name = forms.CharField(label='Team Name:', 
-		max_length=100,
-		min_length=5,
-		help_text='Your team name.',
-		required=False)
-	size = forms.CharField(
-		label="Poster Size:",
-		widget=forms.Select(choices=Size_choices),
-		required=False,
-		)
+	class Meta:
+		Size_choices = (
+			('A4', 'A4'),
+			('A3', 'A3'),
+			)
+		model = TemplateData
+		fields = ('message','team_name', 'size') 
+
+		widgets = {
+		'message': forms.TextInput(attrs={'id': "message_field"}),
+		'size': forms.Select(choices=Size_choices),
+		}
+		labels = {
+		'message': 'Your Message:',
+		'team_name': 'Team Name:',
+		'size': 'Poster Size:'
+		}
+
+		help_text = {
+		'message': 'How you do #DiversityFIRST within your team.', 
+		'team_name': 'Your team name.',
+		}
+
+	def __init__(self, *args, **kwargs):
+		super(TemplateForm, self).__init__(*args, **kwargs)
+		msg = self.fields['message']
+		msg.min_length = 5
+		msg.required = False
+
+
+		t_m = self.fields['team_name']
+		t_m.required = True
+
+		sz = self.fields['size']
+		sz.required = False
