@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'diversityFIRST.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'Merlin99',
@@ -143,7 +143,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #heroku stuff
 import dj_database_url
-db_from_env = dj_database_url.config()
+db_from_env = dj_database_url.config('postgres://postgres:Merlin99@localhost:5432/postgres')
 DATABASES['default'].update(db_from_env)
 DATABASES['default']['CONN_MAX_AGE'] = 500
 # Activate Django-Heroku.
