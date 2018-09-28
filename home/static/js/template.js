@@ -1,12 +1,48 @@
+function prevSizing(){
+	var width = $('#box_js2').width();
+	var h = width * (210 / 297);
+	//dimensioning it to be roughly A4 size
+	$('#box_js2').height(h);
+	$('#box_js').height(h);
 
+	var size = 0.05 * width
+	var padR = width * 0.275
+	
+	// font-size
+	$('.pretitle').css('font-size', size);
+	$('.predetails').css('font-size', size);
+
+	//message padding (right)
+	$('.predetails').css('padding-right', padR);
+
+	//message so I know
+}
+
+function downBtnLoc(){
+	if ($(window).width() < 700){
+		//grid off
+		$('#sm_down').css('display', 'none');
+		$('#lg_down').css('display', 'block');
+	} else {
+		//grid on
+		$('#sm_down').css('display', 'block');
+		$('#lg_down').css('display', 'none');
+	}
+}
 
 
 $(function(){
 	$('#message_field').change(function(){
 		$('#message').html($('#message_field').val());
 	});
+	prevSizing();
+	downBtnLoc();
 });
 
+$(window).resize(function(){
+	prevSizing();
+	downBtnLoc();
+});
 
 /*
 var row_c = document.getElementById("GridBox");
