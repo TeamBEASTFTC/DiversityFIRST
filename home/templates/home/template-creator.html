@@ -5,6 +5,7 @@
 <title>DiversityFIRST - template creator</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{% static 'css/old_preview2.css' %}">
+<script src="{% static 'js/template.js' %}"></script>
 
 <style type="text/css">
 
@@ -135,51 +136,52 @@
 <h6 style="opacity: 0.5;"><i>Please note, you can get a blank poster by leaving the team and message fields blank.</i></h6>
 <br>
 <div id ="GridBox" class="GridBox container">
-<div class="col1">
-<form role="form" method="post">
-    {% csrf_token %}
-        {% include 'bf_form.html' with form=form %}
-        <button id="sm_down" type='submit' class="btn btn-dark" style="width:100%; display: none;"><i class="fa fa-download"></i> Download</button>
-    </div>
-    <div class="col2">
-<div id="box_js2" class="box" style="display: block; text-align: left;">
-<div id="box_js" class='preview'>
-                 <strong><h1 class='pretitle'>We put <font color="orange">#DiversityFIRST</font>  by...</h1></strong>
-                 <br>
-             <h2 class='predetails' id='message'></h2> 
-            <div style="
+	<div class="col1">
+		<form role="form" method="post">
+		{% csrf_token %}
+		{% include 'bf_form.html' with form=form %}
+		<button id="sm_down" type='submit' class="btn btn-dark" style="width:100%; display: none;"><i class="fa fa-download"></i> Download</button>
+		</div>
+
+	    <div class="col2">
+
+			<div id="box_js2" class="box" 
+			style="
+			display: block; text-align: left;"
+			>
+				<div id="box_js" class='preview'>
+
+				<strong><h1 class='pretitle'>We put <font color="orange">#DiversityFIRST</font> by...</h1></strong>
+				<br>
+				<h2 class='predetails' id='message'></h2> 
+				{# image, currently making webpage wider #}
+					<div style="
 					position: absolute;
-                    bottom: 0% ! important;
-                    right: 0;
-                    left: 73%;
-                    padding-right: 0 !important;
-                    height: auto;
-                    width: 100%;
-            ">
-                {% include 'base64/#diversity_logo.html' with widthS=25 %}
-             </div></div>
-         </div>
-     </div>
-    </div>
+					bottom: 0% ! important;
+					text-align: right;
+					right: 0 ! important;
+					padding-right: 0 !important;
+					height: auto;
+					width: 100%;
+					">
+					{% include 'base64/#diversity_logo.html' with widthS=25 %}
+				</div>
+			</div>
+		</div>
+	</div>
 
-<button id="lg_down" type='submit' class="btn btn-dark" style="width:100%"><i class="fa fa-download"></i> Download</button>
 
-</form>
-<br>
-<br>
+	<button id="lg_down" type='submit' class="btn btn-dark" style="width:100%"><i class="fa fa-download"></i> Download</button>
+
+	</form>
+	<br>
+	<br>
 </div>
-
     <br><br>
     <br>
  <script type="text/javascript">
 
-var messageIn = document.getElementById("message_field");
 
-var messageEl = document.getElementById("message");
-messageIn.onchange = function(){
-	message.innerHTML = messageIn.value;
-
-}
 var row_c = document.getElementById("GridBox");
 var sm_down = document.getElementById("sm_down");
 var lg_down = document.getElementById("lg_down");

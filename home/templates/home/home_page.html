@@ -45,86 +45,30 @@
 
 {% block body %}
 <div data-aos="fade" data-aos-duration="3000">
-<img id="header_img" src="{% static 'img/dark_logo2.png' %}">
-<div id="header_block">
-<h1><font color="white"><strong>Be part of the movement</strong></font></h1>
-<br>
-</div></div>
+	<img id="header_img" src="{% static 'img/dark_logo2.png' %}">
+	<div id="header_block">
+		<h1><font color="white"><strong>Be part of the movement</strong></font></h1>
+		<br>
+	</div>
+</div>
 
-{# The Mission #}
+	{# The Mission #}
 <div class="container-fluid" id="Welcome_Mission">
-<br>
-<h2><strong>The Mission:</strong></h2>
-<h3 id="mission_txt">#DiversityFIRST is an @ftcbeast12990 initiative, launched in 2018, to showcase the diversity of FIRST participants in teams across the world!</h3>
-<br>
-<br>
-{# template creator #}
-<h2><strong>Get Involved!</strong></h2>
-<h3 id="marker"></h3>
+	<br>
+	<h2><strong>The Mission:</strong></h2>
+	<h3 id="mission_txt">#DiversityFIRST is an @ftcbeast12990 initiative, launched in 2018, to showcase the diversity of FIRST participants in teams across the world!</h3>
+	<br>
+	<br>
+	{# template creator #}
+	<h2><strong>Get Involved!</strong></h2>
+	<h3 id="marker"></h3>
 
-{% include 'home/template-creator.html' with form=form %}
+	{% include 'home/template-creator.html' with form=form %}
 </div>
 
 
 
 
 
-
-<script type="text/javascript">
-var marker = document.getElementById("marker");
-var welEl = document.getElementById("Welcome_Mission");
-var top_d_wel = welEl.offsetTop;
-
-var nav = document.getElementById("navBar");
-var op = 0;
-var eye = 0;
-
-// fade out
-
-function fadeOut(el){
-  el.style.opacity = 1;
-
-  (function fade() {
-    if ((el.style.opacity -= .1) < 0) {
-      el.style.display = "none";
-    } else {
-      requestAnimationFrame(fade);
-    }
-  })();
-}
-
-// fade in
-
-function fadeIn(el, display){
-  el.style.opacity = 0;
-  el.style.display = display || "block";
-
-  (function fade() {
-    var val = parseFloat(el.style.opacity);
-    if (!((val += .03) > 1)) {
-      el.style.opacity = val;
-      requestAnimationFrame(fade);
-    }
-  })();
-}
-
-window.onscroll = function (e) {
-	if ((window.scrollY >= (top_d_wel - 50)) && (eye == 0)){
-		fadeIn(nav);
-		eye += 1;
-
-	}
-	/*
-	if (window.scrollY < (top_d_wel - 50)) {
-	 	fadeOut(nav);
-	 	eye = 0;
-	 }
-*/
-}
-
-
- 
-
-</script>
 
 {% endblock %}
