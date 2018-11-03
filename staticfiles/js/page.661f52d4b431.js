@@ -1,5 +1,8 @@
 
-
+$(function(){
+  img_h_dimension = (($(window).height()) * 0.9);
+  $('.team_photo').height(img_h_dimension);
+});
 
 
 /*

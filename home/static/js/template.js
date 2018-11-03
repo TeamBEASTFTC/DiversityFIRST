@@ -30,6 +30,10 @@ function downBtnLoc(){
 	}
 }
 
+function TeamPhotoSize(){
+  img_h_dimension = (($(window).height()) * 0.75);
+  $('.team_photo').height(img_h_dimension);
+};
 
 $(function(){
 	$('#message_field').change(function(){
@@ -37,11 +41,13 @@ $(function(){
 	});
 	prevSizing();
 	downBtnLoc();
+	TeamPhotoSize();
 });
 
 $(window).resize(function(){
 	prevSizing();
 	downBtnLoc();
+	TeamPhotoSize();
 });
 
 /*
