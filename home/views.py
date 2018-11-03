@@ -9,6 +9,7 @@ from django.template.loader import get_template
 from django.utils.decorators import method_decorator
 from home.forms import TemplateForm
 from home.utils import render_to_pdf #created in step 4
+from home.models import TeamPhoto
 
 from easy_pdf.views import PDFTemplateView
 
@@ -19,6 +20,8 @@ class TemplatePage(TemplateView):
 
 	def get(self, request):
 		template_form = TemplateForm()
+		
+		
 		args = {'form': template_form}
 		return render(request, self.template_name, args)
 	def post(self, request):
@@ -63,7 +66,20 @@ class HomePage(TemplateView):
 
 	def get(self, request):
 		template_form = TemplateForm()
-		args = {'form': template_form}
+		#collecting all the photios and puytting them in a list
+		ph_list = []
+		ph_data = TeamPhoto.objects.all()
+		for photo in ph_data:
+			ph_list.append(photo)
+
+		#getting image
+		#img_list = []
+		#for image in ph_list:
+		#	img_list.append(image.Image)
+
+		#list 
+
+		args = {'form': template_form, 'photo_data': ph_list}
 		return render(request, self.template_name, args)
 
 	def post(self, request):

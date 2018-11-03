@@ -21,3 +21,9 @@ class TemplateData(models.Model):
 
 	def __str__(self):
 		return self.team_name
+
+class TeamPhoto(models.Model):
+	team_name = models.CharField(max_length=50, 
+#		required=False
+		)
+	Image = models.ImageField(upload_to='team_image', blank=False)

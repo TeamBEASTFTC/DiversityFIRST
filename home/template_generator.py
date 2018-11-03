@@ -1,7 +1,7 @@
 
 #pdf generations
 
-
+#uncomment this if needed
 from io import BytesIO
 from reportlab.pdfgen import canvas
 from django.http import HttpResponse
@@ -32,6 +32,7 @@ class Badge_Reporter():
 		buffer.close()
 		response.write(pdf)
 		return response
+
 '''
 		x_cor = 100
 		y_cor = 720

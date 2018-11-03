@@ -1,4 +1,11 @@
-	
+
+$(function(){
+  img_h_dimension = (($(window).height()) * 0.75);
+  $('.team_photo').height(img_h_dimension);
+});
+
+
+/*
 var marker = document.getElementById("marker");
 var welEl = document.getElementById("Welcome_Mission");
 var top_d_wel = welEl.offsetTop;
@@ -37,18 +44,19 @@ function fadeIn(el, display){
 }
 
 window.onscroll = function (e) {
-	if ((window.scrollY >= (top_d_wel - 50)) && (eye == 0)){
-		fadeIn(nav);
-		eye += 1;
+  if ((window.scrollY >= (top_d_wel - 50)) && (eye == 0)){
+    fadeIn(nav);
+    eye += 1;
 
-	}
-	/*
-	if (window.scrollY < (top_d_wel - 50)) {
-	 	fadeOut(nav);
-	 	eye = 0;
-	 }
-*/
+  }
+  */
+  /*
+  if (window.scrollY < (top_d_wel - 50)) {
+    fadeOut(nav);
+    eye = 0;
+   }
 }
+*/
 
 
  
