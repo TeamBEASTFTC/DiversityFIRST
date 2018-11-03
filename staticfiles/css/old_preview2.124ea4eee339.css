@@ -1,0 +1,23 @@
+
+            .box{
+            position: relative;
+            width: 60vw;
+            max-width: 500px ! important;
+            max-height: calc(500px*0.7071) ! important;
+            height: 42.5vw;
+
+
+            }
+             .preview{
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                background-color: white;
+                border: 1px solid black;
+                position: absolute;
+                line-height: 10%;
+                padding: 0.7% 0 0 3.5%;  
+
+             }
+             
