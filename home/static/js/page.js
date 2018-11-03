@@ -2,7 +2,7 @@
 
 
 
-/*
+
 var marker = document.getElementById("marker");
 var welEl = document.getElementById("Welcome_Mission");
 var top_d_wel = welEl.offsetTop;
@@ -46,7 +46,7 @@ window.onscroll = function (e) {
     eye += 1;
 
   }
-  */
+  
   /*
   if (window.scrollY < (top_d_wel - 50)) {
     fadeOut(nav);
