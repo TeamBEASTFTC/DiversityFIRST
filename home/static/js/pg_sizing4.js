@@ -31,8 +31,19 @@ function downBtnLoc(){
 }
 
 function TeamPhotoSize(){
-  img_h_dimension = (($(window).height()) * 0.75);
-  $('.team_photo').height(img_h_dimension);
+	if ($('.team_photo').height > $('.team_photo').width){
+		var portrait = true;
+	} else{
+		var portrait = false;
+	}
+	if (portrait){
+	img_h_dimension = (($(window).height()) * 0.75);
+	$('.team_photo').height(img_h_dimension);		
+	} else{
+	img_w_dimension = (($(window).width()) * 0.75);
+	$('.team_photo').width(img_w_dimension);	
+	}
+
 };
 
 $(function(){
@@ -49,6 +60,10 @@ $(window).resize(function(){
 	downBtnLoc();
 	TeamPhotoSize();
 });
+
+$('#carouselExampleIndicators').on('slid.bs.carousel', function(){
+	TeamPhotoSize();
+})
 
 /*
 var row_c = document.getElementById("GridBox");

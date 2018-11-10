@@ -5,10 +5,18 @@
 <title>DiversityFIRST - template creator</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{% static 'css/old_preview2.css' %}">
-<script src="{% static 'js/template.js' %}"></script>
+<script src="{% static 'js/pg_sizing4.js' %}"></script>
+<script src="{% static 'js/home_page.js' %}"></script>
+
 
 <style type="text/css">
 
+@font-face{
+	font-family: 'Lucida Calligraphy';
+	src: 
+		"{% static 'fonts/22799_LCALLIG.woff' %}" format('woff'),
+		"{% static 'fonts/22799_LCALLIG.ttf' %}" format('ttf');
+}
 
 @media screen and (min-width: 700px){
 
@@ -162,6 +170,7 @@
 					padding-right: 0 !important;
 					height: auto;
 					width: 100%;
+
 					">
 					{% include 'base64/#diversity_logo.html' with widthS=25 %}
 				</div>
