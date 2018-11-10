@@ -26,4 +26,4 @@ class TeamPhoto(models.Model):
 	team_name = models.CharField(max_length=50, 
 #		required=False
 		)
-	Image = models.ImageField(upload_to='team_image', blank=False)
+	Image = models.ImageField()

@@ -19,4 +19,5 @@ urlpatterns = [
 	path('', HomePage.as_view(), name="home_page"),
 	path('pdf', GeneratePdf.as_view(), name="pdf"),
 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku, dj_database_url
+from decouple import config
+
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -22,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-645**=8v*a!pn!6fnubso&$#_%yz=cxwxm3nuww80u6fn445='
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -43,6 +45,8 @@ INSTALLED_APPS = [
 
     'widget_tweaks',
     'easy_pdf',
+    'storages',
+
 ]
 
 MIDDLEWARE = [
@@ -86,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'Merlin99',
+        'PASSWORD': config('db_password'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -130,13 +134,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 #URL = the url, root = where we want to put them -> 1st = rootm 2nd arg = own path
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL ='/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'home/media')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+#MEDIA_URL ='/media/'
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'home/media')
+
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #STATICFILES_DIRS = [
 #    ('node_modules', os.path.join(BASE_DIR, 'node_modules')),
 #]
@@ -147,8 +153,37 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #heroku stuff
 import dj_database_url
-db_from_env = dj_database_url.config('postgres://postgres:Merlin99@localhost:5432/postgres')
+db_from_env = dj_database_url.config('postgres://postgres:{}@localhost:5432/postgres'.format(config('db_password')))
 DATABASES['default'].update(db_from_env)
 DATABASES['default']['CONN_MAX_AGE'] = 500
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+
+#static stuff
+
+#AWS
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'home/static'),
+]
+AWS_ACCESS_KEY_ID = 'AKIAJTYSZXRLP6M46BRQ'
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'diversity-first-assets'
+
+AWS_DEFAULT_ACL = 'public-read'
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+AWS_STATIC_LOCATION = 'static'
+STATICFILES_STORAGE = 'diversityFIRST.storage_backends.StaticStorage'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
+
+AWS_PUBLIC_MEDIA_LOCATION = 'media/public'
+DEFAULT_FILE_STORAGE = 'diversityFIRST.storage_backends.PublicMediaStorage'
+
+AWS_PRIVATE_MEDIA_LOCATION = 'media/private'
+PRIVATE_FILE_STORAGE = 'diversityFIRST.storage_backends.PrivateMediaStorage'
