@@ -27,3 +27,7 @@ class TeamPhoto(models.Model):
 #		required=False
 		)
 	Image = models.ImageField()
+
+
+	def __str__(self):
+		return '%s'% (self.team_name)
