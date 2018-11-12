@@ -85,11 +85,14 @@
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 	  <ol class="carousel-indicators">
 	  	{% for photo in photo_data %}
-		{% if forloop.first %}
-	    <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
-		{% else %}
-	    <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}"></li>
-	    {% endif %}
+			{% if 'team_image' not in photo.Image.url %}
+
+				{% if forloop.first %}
+			    <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+				{% else %}
+			    <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}"></li>
+			    {% endif %}
+		    {% endif %}
 	    {% endfor %}
 	  </ol>
 	    
