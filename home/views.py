@@ -146,3 +146,6 @@ class GeneratePdf(View):
 			response['Content-Disposition'] = content
 			return response
 		return HttpResponse("Not Found")
+
+class ExtraView(TemplateView):
+	template_name = 'home/extra.html'

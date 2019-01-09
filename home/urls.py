@@ -10,6 +10,7 @@ from home.views import (
 	TemplatePage,
 	HomePage,
 	GeneratePdf,
+	ExtraView,
 	)
 
 urlpatterns = [
@@ -18,6 +19,6 @@ urlpatterns = [
 		name="template-creator"),
 	path('', HomePage.as_view(), name="home_page"),
 	path('pdf', GeneratePdf.as_view(), name="pdf"),
-
+	path('ea9f91b2cda019730f2891bd12a7a4d6/', ExtraView.as_view(), name="extra"),
 ]
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
