@@ -166,7 +166,7 @@ django_heroku.settings(locals())
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'home/static'),
 ]
-AWS_ACCESS_KEY_ID = 'AKIAJCEWL56SRQIJH3AQ'
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'diversity-first-asset'
 
