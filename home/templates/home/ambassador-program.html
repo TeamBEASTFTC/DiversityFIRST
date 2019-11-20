@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+<title>DiversityFIRST - Home</title>
+<style type="text/css">
+
+
+
+#header_block{
+
+	background-color: #343a40;
+	text-align: center; 
+}
+#header_img{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 4vh;
+	height: auto;
+	width: 50vw;
+
+
+
+}
+
+.hbr{
+	display: block;
+	font-size: 50vh;
+}
+
+#Welcome_Mission{
+	text-align: center;
+	background: orange;
+}
+
+#mission_txt{
+	text-align: center;
+	margin-right: 8vw;
+	margin-left: 8vw;
+}
+
+#carousel-container{
+	text-align: center;
+	background-color: #343a40;
+}
+
+.center-list-center{
+	display: inline-block;
+    text-align:center;
+    align-self: center;
+   margin-left:auto;
+   margin-right:auto;
+/*   display:block;
+*/}
+
+.center-list-left{
+	display: inline-block;
+    text-align:left;
+    align-self: center;
+   margin-left:auto;
+   margin-right:auto;
+/*   display:block;
+*/}
+}
+</style>
+
+{% endblock %}
+
+{% block body %}
+
+<div data-aos="fade" data-aos-duration="3000">
+	<img id="header_img" src="{% static 'img/dark_logo2.png' %}">
+	<div id="header_block">
+		<h1><font color="white"><strong>Be part of the movement</strong></font></h1>
+		<br>
+	</div>
+</div>
+
+<div class="container-fluid" id="Welcome_Mission">
+	<br>
+	<h2><strong>We are excited to have you part of this journey!</strong></h2>
+	<h3 id="mission_txt">Part of celebrating diversity is getting everyone on board. We know you want to work on your robot and sometimes doing impactful outreach can be hard... so we've made a program which makes the most of your time.</h3>
+	<br>
+<!-- 	<div class="row" style="text-align: left;">
+	<div class="col-5">
+ -->		
+	 <h4>Why join? Well it can give strong outreach benefits by:</h4>
+		<div class="row">
+			<div class="col-6">
+				<div class="center-list-center">
+					<p>
+					<i class="fa fa-heart" aria-hidden="true"></i>
+Giving something you can talk about for <strong>outreach</strong></li>
+						
+					</p>
+					<p>
+					<i class="fa fa-heart" aria-hidden="true"></i>
+<strong>Giving you a voice</strong> with promoting diversity within FIRST</li>
+					</p>
+				</div>
+				
+			</div>
+			<div class="col-6">
+				<div class="center-list-center">
+					<p>
+					<i class="fa fa-heart" aria-hidden="true"></i>
+Getting you a cool logo on that T-Shirt of yours :)</li>
+						
+					</p>
+					<p>
+					<i class="fa fa-heart" aria-hidden="true"></i>
+Giving you <strong>outreach bragging rights</strong> because you're actually doing something cool
+					</p>
+						
+				</div>
+					</div>
+				
+			
+		</div>
+		<br>
+ 		
+	<!-- </div>
+	<div class="col-5"> -->
+		<h4>Is it much work? Nope, all you would have to:</h4>
+		<ol class="center-list-left">
+			<li>Print and laminate an A3 #diversityFIRST poster</li>
+			<li>Find teams during your match day or similar</li>
+			<li>Get them to write how they do diversity on a #diversityFIRST poster</li>
+			<li>Take a photo with the team and repeat</li>
+			<li>Upload photos here or share on instagram with the tag: #diversityFIRST</li>
+		</ol>
+<!-- 	</div>
+		
+	</div>
+ -->	<br>
+
+
+
+<form role="form" method="post">
+	{% csrf_token %}
+	{% include 'bf_form.html' with form=form %}
+
+	<br>
+	<button type='submit' class="btn btn-dark" style="width:100%"><i class="fa fa-paper-plane-o"></i> Begin!</button>
+
+</form>
+<br>
+<br>
+<h3 style="text-align: left">
+	
+<a style="color: grey" href="{% url 'home:home_page' %}"><i class="fa fa-chevron-circle-left"></i>
+ Take me back to the homepage</a>
+</h3>
+</div>
+<br>
+
+<br>
+
+
+
+{% endblock %}

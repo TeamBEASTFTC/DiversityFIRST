@@ -1,5 +1,24 @@
 from django import forms
-from home.models import TemplateData
+from home.models import TemplateData, AmbassadorData
+
+class AmbassadorForm(forms.ModelForm):
+
+	class Meta:
+		model = AmbassadorData
+		fields = ('team_name', 'team_email', 'message')
+
+	def __init__(self, *args, **kwargs):
+		super(AmbassadorForm, self).__init__(*args, **kwargs)
+
+		t_name = self.fields['team_name']
+		t_name.required = True
+
+		t_email = self.fields['team_email']
+		t_email.required = True
+
+		message = self.fields['message']
+		message.required = False
+		message.label = 'How are you going to use this ambassadorship?'
 
 
 class TemplateForm(forms.ModelForm):

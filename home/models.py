@@ -1,6 +1,18 @@
 from django.db import models
 
+
 # Create your models here.
+class AmbassadorData(models.Model):
+	team_name = models.CharField(max_length=50, blank=False
+#		required=False
+	)
+	team_email = models.EmailField(max_length=200, blank=False)
+
+	message = models.CharField(max_length=1000, blank=True)
+
+
+	def __str__(self):
+		return '%s'% (self.team_name)
 
 class TemplateData(models.Model):
 

@@ -1,3 +1,6 @@
+import requests
+
+
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
@@ -7,7 +10,7 @@ from django.template.loader import get_template
 
 
 from django.utils.decorators import method_decorator
-from home.forms import TemplateForm
+from home.forms import TemplateForm, AmbassadorForm
 from home.utils import render_to_pdf #created in step 4
 from home.models import TeamPhoto
 
@@ -149,3 +152,42 @@ class GeneratePdf(View):
 
 class ExtraView(TemplateView):
 	template_name = 'home/extra.html'
+
+class AmbassadorPage(TemplateView):
+	template_name = "home/ambassador-program.html"
+
+	def get(self, request):
+		form = AmbassadorForm()
+		args = {'form': form}
+		return render(request, self.template_name, args)
+
+
+	def post(self, request):
+		form = AmbassadorForm()
+		args = {'form': form}
+
+		form_info = AmbassadorForm(request.POST)
+
+		if form_info.is_valid():
+			print('AmbassadorForm form accepted')
+			team_name = form_info.cleaned_data['team_name']
+			team_email = form_info.cleaned_data['team_email']
+			message = form_info.cleaned_data['message']
+			info = form_info.save(commit=False)
+
+			if message == '' or message == None:
+				message = 'Undecided'
+			info.message = message
+			info.save()
+
+			print('AmbassadorForm saved')
+			args['form_saved'] = True
+			query_data= {
+			'team_name': team_name,
+			'team_email': team_email,
+			'message': message,
+			}
+
+			r = requests.post('https://hooks.zapier.com/hooks/catch/2174411/o4xkken/', data=query_data)
+
+		return render(request, self.template_name, args)
