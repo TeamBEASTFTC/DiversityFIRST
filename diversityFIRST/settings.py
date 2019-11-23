@@ -70,6 +70,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'diversityFIRST.context_processors.google_tag',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -187,3 +188,9 @@ DEFAULT_FILE_STORAGE = 'diversityFIRST.storage_backends.PublicMediaStorage'
 
 AWS_PRIVATE_MEDIA_LOCATION = 'media/private'
 PRIVATE_FILE_STORAGE = 'diversityFIRST.storage_backends.PrivateMediaStorage'
+
+
+#Other Variables
+ZAPIER_EMAIL_WEBHOOK_URL = config('ZAPIER_EMAIL_WEBHOOK_URL')
+
+GOOGLE_ANALYTICS_TAG = config('GOOGLE_ANALYTICS_TAG')

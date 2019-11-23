@@ -8,6 +8,8 @@ from django.views.generic import View
 from home.template_generator import Badge_Reporter
 from django.template.loader import get_template
 
+from django.conf import settings # import the settings file
+
 
 from django.utils.decorators import method_decorator
 from home.forms import TemplateForm, AmbassadorForm
@@ -187,7 +189,8 @@ class AmbassadorPage(TemplateView):
 			'team_email': team_email,
 			'message': message,
 			}
+			post_url = settings.ZAPIER_EMAIL_WEBHOOK_URL
 
-			r = requests.post('https://hooks.zapier.com/hooks/catch/2174411/o4xkken/', data=query_data)
+			r = requests.post(post_url, data=query_data)
 
 		return render(request, self.template_name, args)
