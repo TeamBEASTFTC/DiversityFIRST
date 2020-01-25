@@ -10,7 +10,6 @@ from home.views import (
 	TemplatePage,
 	HomePage,
 	GeneratePdf,
-	ExtraView,
 	AmbassadorPage,
 	)
 

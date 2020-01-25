@@ -71,17 +71,11 @@ class HomePage(TemplateView):
 
 	def get(self, request):
 		template_form = TemplateForm()
-		#collecting all the photios and puytting them in a list
+		#collecting all the photios and putting them in a list
 		ph_list = []
 		ph_data = TeamPhoto.objects.all()
 		for photo in ph_data:
 			ph_list.append(photo)
-
-		#getting image
-		#img_list = []
-		#for image in ph_list:
-		#	img_list.append(image.Image)
-
 		#list 
 
 		args = {'form': template_form, 'photo_data': ph_list}
@@ -152,8 +146,6 @@ class GeneratePdf(View):
 			return response
 		return HttpResponse("Not Found")
 
-class ExtraView(TemplateView):
-	template_name = 'home/extra.html'
 
 class AmbassadorPage(TemplateView):
 	template_name = "home/ambassador-program.html"
