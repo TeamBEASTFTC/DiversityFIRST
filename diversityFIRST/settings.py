@@ -164,12 +164,14 @@ django_heroku.settings(locals())
 #static stuff
 
 #AWS
+#View: 
+#https://simpleisbetterthancomplex.com/tutorial/2017/08/01/how-to-setup-amazon-s3-in-a-django-project.html
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'home/static'),
 ]
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = 'diversity-first-asset'
+AWS_STORAGE_BUCKET_NAME = 'beast-diversity-first-asset'
 
 AWS_DEFAULT_ACL = 'public-read'
 
@@ -191,6 +193,9 @@ PRIVATE_FILE_STORAGE = 'diversityFIRST.storage_backends.PrivateMediaStorage'
 
 
 #Other Variables
+#This Zapier is linked to the bshs cerise account
+#Ask Milind for more details
 ZAPIER_EMAIL_WEBHOOK_URL = config('ZAPIER_EMAIL_WEBHOOK_URL')
 
+#This is linked to my (Felix's) account currently
 GOOGLE_ANALYTICS_TAG = config('GOOGLE_ANALYTICS_TAG')
