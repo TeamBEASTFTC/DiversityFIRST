@@ -172,7 +172,7 @@ STATICFILES_DIRS = [
 ]
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = 'beast-diversity-first'
+AWS_STORAGE_BUCKET_NAME = 'diversity-first'
 
 AWS_DEFAULT_ACL = 'public-read'
 
