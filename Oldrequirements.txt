@@ -26,7 +26,7 @@ pdfrw==0.4
 Pillow==6.2.0
 psycopg2==2.7.5
 pycparser==2.18
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 Pyphen==0.9.5
 pytz==2018.5
 reportlab==3.5.6
